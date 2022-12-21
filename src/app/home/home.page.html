@@ -1,20 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <h3>Digimons</h3>
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder='Buscar (nome ou level)'
+      [(ngModel)]='searchValue'
+      debounce=600
+      (ionChange)="handleSearchChange($event)">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list [hidden]="hide">
+    <ion-item button *ngFor="let digimon of digimons" [routerLink]="[digimon.name]">
+      <ion-avatar slot="start">
+        <img [src]="digimon.img" />
+      </ion-avatar>
+ 
+      <ion-label class="ion-text-wrap">
+        <h3>{{digimon.name}}</h3>
+        <p>{{digimon.level}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list [hidden]="hideOneResult">
+    <ion-item button [routerLink]="[oneResult.name]">
+      <ion-avatar slot="start">
+        <img [src]="oneResult.img" />
+      </ion-avatar>
+ 
+      <ion-label class="ion-text-wrap">
+        <h3>{{oneResult.name}}</h3>
+        <p>{{oneResult.level}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [hidden]="hideLevelsResult">
+    <ion-item button *ngFor="let digimon of levelsResult" [routerLink]="[digimon.name]">
+      <ion-avatar slot="start">
+        <img [src]="digimon.img" />
+      </ion-avatar> 
+ 
+      <ion-label class="ion-text-wrap">
+        <h3>{{digimon.name}}</h3>
+        <p>{{digimon.level}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

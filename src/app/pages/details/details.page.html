@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{digimon[0].name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img [src]="digimon[0].img" />
+    <ion-card-header>
+      <ion-card-title> {{digimon[0].name}} </ion-card-title>
+      <ion-card-subtitle> {{digimon[0].level}} </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
